@@ -18,7 +18,7 @@
 	<h3>2JSTL 프로젝트의 메뉴입니다.</h3>
 	<ul>
 	<!-- (UserAccountVO)session.getAttribute("user") -->
-		<c:if test="${user != null }">
+		<c:if test="${user ne null }">	<!-- not equal -->
 			 	<li>로그인 사용자</li>
 				<li> 아이디 : ${user.userid } %></li>		
 				<li> 이름 : ${user.username }</li>		
