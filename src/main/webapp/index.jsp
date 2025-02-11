@@ -29,7 +29,7 @@
 				<li><a href="/1start/4_register.jsp">회원 가입</a></li> <!-- 로그인 상태가 아닐때 나오는 메뉴 -->
 				<li><a href="5_login.jsp">로그인</a></li> <!-- 로그인 상태가 아닐때 나오는 메뉴 -->
 			</c:if>	
-		
+				<li><a href="ncDinos/shop_item.jsp">NCDinos 팬 상품</a></li>
 	</ul>
 </body>
 </html>

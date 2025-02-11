@@ -7,30 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style tyle="text/css">
-.container{
-	display : flex; width:800px; margin:auto
-}
-.cont-box{
-	margin-left:20px; width:300px
-}
-.img-box{
-	width:500px; height:550px;
-}
-.orderCount{
-	border-bottom:1px solid gray; border-top:1px solid gray
-}
-.orderButton{
-	margin-top:20px;
-}
-.orderCount > input{
-	padding:5px 10px; margin: 10px;
-}
-.orderButton > button{
-	padding:10px 20px; font-size: 1.2rem
-}
-</style>
+<title> NCDinos Fan Item </title>
+<link rel="stylesheet" href="css/orderItem.css">
 </head>
 <body>
 <%
@@ -62,24 +40,47 @@
 			<div class="img-box">
 				<img alt="${vo.title}" src="product/${vo.filename}" width="100%">
 			</div>
-			<div class="cont-box">
-				<h3>${vo.title }</h3>
-				<h3>정가 : <fmt:formatNumber value="${vo.price }" pattern="###,###"/> 원</h3>
-				<h3>판매가 : <fmt:formatNumber value="${vo.price }" pattern="###,###"/> 원</h3>
-				<div class="orderCount"> 주문 수량 : 
-					<input type="number" min="1" max="999" size="20"/>
+			<!-- 사용자가 선택 또는 입력하는 것이 아니고
+				 기존의 값을 파라미터 전달해야 하는 것을 type="hidden" 으로 합니다.
+			 -->
+			<form action="fanitem_order.jsp" method="post">
+				<input type="hidden" name="seq" value="${vo.seq }" />
+				<input type="hidden" name="price" value="${vo.price }" />
+				<div class="cont-box">
+					<h3>${vo.title }</h3>
+					<h3>정가 : <fmt:formatNumber value="${vo.price }" pattern="###,###"/> 원</h3>
+					<h3>판매가 : <fmt:formatNumber value="${vo.price }" pattern="###,###"/> 원</h3>
+					<div class="orderCount"> 주문 수량 : 
+						<input type="number" name="count" min="1" max="999" size="20" value="1"/>
+					</div>
+					<div class="orderButton">
+					<!-- 구매 요구사항 : 반드시 로그인 상태에서 실행 -->
+					<!-- 1번 프로젝트의 4_register.jsp 와 다른점
+						1) button 의 type : submit 을 button 으로 변경
+						2) 자바스크립트 이벤트 : onsubmit 을 onclick 으로 변경
+					-->
+						<button type="button"
+						onclick="orderItem()">구매하기</button>
+					</div>
 				</div>
-				<div class="orderButton">
-					<button>구매하기</button>
-				</div>
-			</div>
+			</form>
 		</div>
 	<hr/>
 	<div style="text-align:center">
-		<button style="padding:10px 20px; font-size: 1.2rem" 
-		onclick="location.href='ncDinos_shop.jsp'">목록</button>
+		<button onclick="location.href='ncDinos_shop.jsp'">목록</button>
 	</div>
-
+	<script type="text/javascript">
+		const useraccount='${user}' 	// jsp 의 attribute user를 가져온다.(5_loginProc.jsp에서 로그인할때 attribute 이름을 user로함)
+		function orderItem(){
+			if(useraccount==''){	// 로그인 하지 않은 상태
+				if(confirm('구매는 로그인이 필요합니다. 로그인 하시겠습니까?'))
+					location.href='../5_login.jsp'	// ../ 부모폴더로 이동
+			}else{	// 로그인 상태
+				if(confirm('구매 하시겠습니까?'))
+					document.forms[0].submit()		// 첫번째 form 요소의 값을 서버로 제출
+			}
+		}
+	</script>
 
 </body>
 </html>

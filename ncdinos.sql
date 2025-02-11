@@ -10,7 +10,21 @@ create table tbl_fanitem (
 	
 create sequence fanitem_seq; 
 
-select * from TBL_FANITEM where seq=5;
+select * from TBL_FANITEM where seq=5; 
+
+create table tbl_fanitem_order (
+	orderSeq number(8) primary key,
+	userid varchar2(200) not null,
+	seq number(8) not null,
+	count number(8) not null,
+	pay number(8) not null,
+	orderDate date default sysdate
+);
+
+create sequence tblorder_seq start with 1001;
+
+
+
 
 insert into tbl_fanitem (seq,title,price,newitem,soldout,filename)
 values(fanitem_seq.nextval, '조구만 브라키오 인형 머리띠', 19000, 1, 0, '1.jpg');

@@ -10,7 +10,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dinos</title>
+  <title>NCDinos Fan Item</title>
   <link rel="icon" href="icon/myfavicon.svg">
   <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/header.css">
@@ -41,7 +41,8 @@
       </div>
       <div class="nav-wrap">
           <div class="nav-con">
-              <img src="img/img-header-emblem@2x.png" alt="" onclick="movePage('/')" style="cursor: pointer;">
+              <img src="img/img-header-emblem@2x.png" alt="" 
+              onclick="location.href='/2JSTL/'" style="cursor: pointer;">
               <ul class="gnb-wrap">
                   <li onclick="movePage('/product/list/UN')">유니폼</li>
                   <li onclick="movePage('/product/list/HA')">모자</li>

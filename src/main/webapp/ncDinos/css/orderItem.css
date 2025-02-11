@@ -1,0 +1,23 @@
+/*CSS 변경 하고 확인할 때. Ctrl+F5*/
+.container{
+	display : flex; width:800px; margin:auto
+}
+.cont-box{
+	margin-left:20px; width:300px
+}
+.img-box{
+	width:500px; height:550px;
+}
+.orderCount{
+	border-bottom:1px solid gray; border-top:1px solid gray
+}
+.orderButton{
+	margin-top:20px;
+}
+.orderCount > input{
+	text-align: right;
+	padding:5px 10px; margin: 10px; font-size: 1.3rem;
+}
+ button{
+	padding:10px 20px; font-size: 1.2rem
+}
